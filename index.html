@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<button id="theme-toggle" class="theme-btn">
+    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+</button>
+
+    <div class="container">
+        <div class="box form-box glow-box">
+
+            <header>ตรวจสอบข้อมูล</header>
+            
+            <div id="resultMessage"></div>
+
+            <form id="checkForm" autocomplete="off">
+                <div class="field input">
+                    <label for="id_card">เลขบัตรประชาชน (ID Card)</label>
+                    <input type="text" name="id_card" id="id_card" maxlength="13" placeholder="กรอกเลข 13 หลัก" required>
+                </div>
+
+                <div class="field input">
+                    <label for="email">อีเมล (Email)</label>
+                    <input type="email" name="email" id="email" placeholder="example@email.com" required>
+                </div>
+
+                <div class="field input">
+                    <label for="province">จังหวัด</label>
+                    <select name="province" id="province" required>
+                        <option value="">เลือกจังหวัด</option>
+                    </select>
+                </div>
+
+                <div class="field input">
+                    <label for="district">อำเภอ/เขต</label>
+                    <select name="district" id="district" required>
+                        <option value="">เลือกอำเภอ</option>
+                    </select>
+                </div>
+
+                <div class="field input">
+                    <label for="sub_district">ตำบล/แขวง</label>
+                    <select name="sub_district" id="sub_district" required>
+                        <option value="">เลือกตำบล</option>
+                    </select>
+                </div>
+
+                <div class="field input">
+                    <label for="zip_code">รหัสไปรษณีย์</label>
+                    <input type="text" name="zip_code" id="zip_code" maxlength="5" placeholder="เช่น 10900" required>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="ตรวจสอบข้อมูล (Check Now)">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="script/Dropdown.js"></script>
+    <script src="script/check.js"></script>
+
+</body>
+</html>

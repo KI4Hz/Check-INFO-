@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+
+:root {
+    /* สี Light Mode (ค่าเริ่มต้น) */
+    --bg-color: #eef2f3;
+    --box-bg: #ffffff;
+    --text-color: #333333;
+    --label-color: #666666;
+    --input-bg: #fcfcfc;
+    --input-border: #dddddd;
+    --input-focus: #6c5ce7;
+    --shadow: rgba(0,0,0,0.1);
+    --btn-text: #fff;
+    --scroll-track: #f1f1f1;
+    --scroll-thumb: #888;
+}
+
+/* สี Dark Mode */
+body.dark-mode {
+    --bg-color: #121212;
+    --box-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --label-color: #aaaaaa;
+    --input-bg: #2d2d2d;
+    --input-border: #444444;
+    --input-focus: #a29bfe;
+    --shadow: rgba(0,0,0,0.5);
+    --scroll-track: #2d2d2d;
+    --scroll-thumb: #555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+    /* Transition ให้สีค่อยๆเปลี่ยน */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.box {
+    background: var(--box-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+header {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--label-color);
+    font-size: 14px;
+}
+
+.field input, 
+.field select {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 5px rgba(108, 92, 231, 0.2);
+}
+
+/* ปุ่ม Submit */
+.btn {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    border: none;
+    border-radius: 6px;
+    color: var(--btn-text);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #5b4cc4, #8e85ea);
+    transform: translateY(-2px);
+}
+
+/* ปุ่มเปลี่ยน Theme (ลอยขวาบน) */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--box-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow);
+    z-index: 1000;
+}
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Result Box */
+#resultMessage {
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.success-box {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-left: 5px solid #28a745;
+    text-align: center;
+    animation: slideDown 0.5s ease;
+}
+
+.error-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-left: 5px solid #dc3545;
+    text-align: center;
+    animation: shake 0.5s ease;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.glow-box {
+    position: relative;
+    overflow: hidden; 
+    --x: 50%; 
+    --y: 50%;
+}
+
+body.dark-mode .glow-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    
+ 
+    background: radial-gradient(
+        600px circle at var(--x) var(--y), 
+        rgba(255, 255, 255, 0.06), 
+        transparent 40%             
+    );
+    
+    z-index: 1; 
+    opacity: 0; 
+    transition: opacity 0.5s ease; 
+}
+
+body.dark-mode .glow-box:hover::before {
+    opacity: 1;
+}
+
+.glow-box form, 
+.glow-box header, 
+.glow-box div {
+    position: relative;
+    z-index: 2;
+}
